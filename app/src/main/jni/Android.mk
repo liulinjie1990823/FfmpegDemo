@@ -6,6 +6,8 @@ endif
 
 LOCAL_PATH:= $(call my-dir)
 
+
+# FFmpeg library
 include $(CLEAR_VARS)
 LOCAL_MODULE:= avcodec-prebuilt-$(LIB_NAME_PLUS)
 LOCAL_SRC_FILES:= prebuilt/$(LIB_NAME_PLUS)/libavcodec-57.so
@@ -41,9 +43,10 @@ LOCAL_MODULE := swscale-prebuilt-$(LIB_NAME_PLUS)
 LOCAL_SRC_FILES := prebuilt/$(LIB_NAME_PLUS)/libswscale-4.so
 include $(PREBUILT_SHARED_LIBRARY)
 
-include $(CLEAR_VARS)
 
-LOCAL_MODULE := libffmpegjni
+# Program
+include $(CLEAR_VARS)
+LOCAL_MODULE := ffmpegdemo
 
 ifeq ($(APP_ABI), x86)
 TARGET_ARCH:=x86
@@ -52,11 +55,7 @@ else
 LOCAL_ARM_MODE := arm
 endif
 
-LOCAL_SRC_FILES := FFmpegNativeHelper.c \
-                   cmdutils.c \
-                   ffmpeg_opt.c \
-                   ffmpeg_filter.c \
-                   show_func_wrapper.c
+LOCAL_SRC_FILES := ffmpegdemo.c
 
 LOCAL_LDLIBS := -L$(SYSROOT)/usr/lib -llog -lz
 
