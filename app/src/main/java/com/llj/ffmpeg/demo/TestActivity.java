@@ -7,4 +7,5 @@ package com.llj.ffmpeg.demo;
  */
 
 public class TestActivity {
+    private int ada;
 }
